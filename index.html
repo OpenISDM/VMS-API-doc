@@ -8,12 +8,12 @@
 
     <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       <script src="javascripts/all.js" type="text/javascript"></script>
 
       <script>
         $(function() {
-          setupLanguages(["shell","ruby","python"]);
+          setupLanguages(["http"]);
         });
       </script>
   </head>
@@ -28,9 +28,7 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="http">http</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -46,151 +44,75 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+        <h1 id="introduction">Introduction</h1>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p><strong>This is a DRAFT version.</strong></p>
 
-<p>This example API documentation page was created with <a href="http://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>If you have any problems, please create an issue on <a href="https://github.com/OpenISDM/VMS-API-doc">GitHub</a>.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">kittn</span>
+<p>The POST and PUT requests body must be JSON format and the Content-Type header also set to application/json. In addition, for authenticating request, the X-VMS-API-Key set to your application key.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre><code class="highlight shell"><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
+<p>On the following <em>PARAMETER</em> or <em>ATTRIBUTE</em>, if the field contains with <em>&rsquo; * &rsquo;</em>, it means it is a mandatory field.</p>
 
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
+<h1 id="api-versioning">API Versioning</h1>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<ul>
+<li>Prefix URI: /api/v1.0/</li>
+</ul>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+          <h1 id="http-request">HTTP Request</h1>
 
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
+<p>VMS API defines some header fields. </p>
 
-<p><aside class="notice">
-You must replace <code class="prettyprint">meowmeowmeow</code> with your personal API key.
-</aside></p>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>Those header fields describe as following:</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre><code class="highlight shell">curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre><code class="highlight json"><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isis"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code class="prettyprint">GET http://example.com/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
+<th>Header field</th>
+<th>Meaning</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>Content-Type</td>
+<td>The request type (application/json or multipart/form-data).</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>X-VMS-API-Key</td>
+<td>An application API key.</td>
+</tr>
+<tr>
+<td>X-VMS-Auth-Token</td>
+<td>The client authentication token for identifying user.</td>
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside></p>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'kittn'</span>
+          <h1 id="http-response-description">HTTP Response Description</h1>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">kittn</span>
+<p>The HTTP status code <code class="prettyprint">2XX</code> represents the request was executed successfully. Otherwise, the HTTP status code <code class="prettyprint">4XX</code> represents the request unable to execute.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre><code class="highlight shell">curl <span class="s2">"http://example.com/api/kittens/3"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
+<p>The VMS API uses the following success codes:</p>
 
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre><code class="highlight json"><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isis"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves a specific kitten.</p>
-
-<p><aside class="warning">If you&rsquo;re not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside></p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Success Code</th>
+<th>Meaning</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the cat to retrieve</td>
+<td>200</td>
+<td>OK &ndash; The request was executed normally.</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Created &ndash; The request has been fulfilled and resulted in a new resource being created.</td>
+</tr>
+<tr>
+<td>204</td>
+<td>No Content &ndash; The server successfully processed the request, but is not returning any content.</td>
 </tr>
 </tbody></table>
 
-          <h1 id='errors'>Errors</h1>
-<p><aside class="notice">This error section is stored in a separate file in <code class="prettyprint">includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the <code class="prettyprint">includes</code> folder and add them to the top of your <code class="prettyprint">index.md</code>&rsquo;s frontmatter. Files are included in the order listed.</aside></p>
-
-<p>The Kittn API uses the following error codes:</p>
+<p>The VMS API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -200,39 +122,19 @@ Remember — a happy kitten is an authenticated kitten!
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td>Bad Request</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
+<td>Unauthorized &ndash; Your <code class="prettyprint">X-VMS-API-Key</code> or <code class="prettyprint">X-VMS-Auth-Token</code> is wrong.</td>
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>Forbidden &ndash; The requeste is not able to execute.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slown down!</td>
+<td>Not Found &ndash; The specified VMS could not be found.</td>
 </tr>
 <tr>
 <td>500</td>
@@ -244,12 +146,2260 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </tbody></table>
 
+          <h1 id="account">Account</h1>
+
+<h2 id="register">Register</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1.0/register</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"username"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"password"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MYPASSW0RD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"first_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Lin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Jim"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"birth_year"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2015</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"gender"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name_zh_tw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"臺北市"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name_en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Taipei City"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"128 Academia Road, Section 2, Nankang Dist."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone_number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0912345678"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin@citi.sinica.edu.tw"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emergency_contact"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Jeremy Lin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emergency_phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0919119119"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+<span class="na">Location</span><span class="p">:</span> <span class="s">https://vms.app/api/v1.0/users/me</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auth_access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56f4da226eb22caa0633023bfdd402658e5c6501c972e83bfb2866f2112b103f"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the attribute is missing, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Register"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"username"</span><span class="p">,</span><span class="w"> </span><span class="s2">"password"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"missing_field"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the password strength is not enough, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Register"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"passsword"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_enough_password_strength"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the username or email address was used, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">409</span> <span class="ne">Conflict</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Register"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"username"</span><span class="p">,</span><span class="w"> </span><span class="s2">"password"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"used_field"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Volunteer registers a new account. The system will send a verification email to volunteer mailbox with an link.</p>
+
+<h3 id="attribute">ATTRIBUTE</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>password*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>first_name*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>last_name*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>birth_year*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>gender*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>city*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>address*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>phone_number*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>email*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>emergency_contact*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>emergency_phone*</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="city-attribute">city ATTRIBUTE</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>name_zh_tw</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>name_en</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<!-- register END -->
+
+<h2 id="login">Login</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1.0/auth</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MYPASSW0RD"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+<span class="na">Location</span><span class="p">:</span> <span class="s">https://vms.app/api/v1.0/users/me</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auth_access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56f4da226eb22caa0633023bfdd402658e5c6501c972e83bfb2866f2112b103f"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the volunteer&rsquo;s credential is wrong, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">401</span> <span class="ne">Unauthorized</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authentication failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"incorrect_login_credentials"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the attribute is missing, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Login"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"username"</span><span class="p">,</span><span class="w"> </span><span class="s2">"password"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"missing_field"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Volunteer logs into the system with credentials.</p>
+
+<h3 id="attribute">ATTRIBUTE</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username*</td>
+<td></td>
+<td>volunteer&rsquo;s username</td>
+</tr>
+<tr>
+<td>password*</td>
+<td></td>
+<td>volunteer&rsquo;s password</td>
+</tr>
+</tbody></table>
+
+<!-- login END -->
+
+<h2 id="logout">Logout</h2>
+<pre class="highlight http"><code><span class="nf">DELETE</span> <span class="nn">/api/v1.0/auth</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+</code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the volunteer&rsquo;s <code class="prettyprint">auth_access_token</code> doesn&rsquo;t exist, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed to logout"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no_existing_auth_access_token"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Volunteer logout the system. The <code class="prettyprint">X-VMS-Auth-Token</code> will be deleted.</p>
+
+<!-- logout END -->
+
+<h2 id="authentication-amp-retrieve-volunteer-39-s-own-account">Authentication &amp; retrieve volunteer&rsquo;s own account</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/api/v1.0/users/me</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+</code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jim"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"birth_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2015</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name_zh_tw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"臺北市"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name_en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Taipei City"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128 Academia Road, Section 2, Nankang Dist."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone_number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0912345678"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin@citi.sinica.edu.tw"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emergency_contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jeremy Lin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emergency_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0919119119"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"introduction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I’m a genius. I Work on Data science/analytics and have excellent skills with Matlab and Ruby programming. My hobbies is sporting."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"experience"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/exeperience"</span><span class="w"> 
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"education"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/education"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"skills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Swimming"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="w">            
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Programming"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"equipment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Scooter"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Camera"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/projects"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"processes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"participating_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"participated_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/proccesses"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/upload/image/avatar/jimlin_366b4c757bff8643b9f97441a974d94d42f5877b.jpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-22 11:38:04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-20 22:30:47"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the volunteer doesn&rsquo;t have right to access, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forbidden to access"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cannot_access"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>If the <code class="prettyprint">X-VMS-Auth-Token</code> is validated, it will return the volunteer&rsquo;s profile object.</p>
+
+<!-- authentication END -->
+
+<h2 id="resend-email-address-verification">Resend email address verification</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/email_verification</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"email_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin@citi.sinica.edu.tw"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resend verification email successfully"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the volunteer doesn&rsquo;t have right to access, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forbidden to access"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cannot_access"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Resend a verification email. A new verification email will send to volunteer&rsquo;s mailbox.</p>
+
+<h3 id="attribute">ATTRIBUTE</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email_address*</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<!-- resend email address verification END -->
+
+<h2 id="verify-email-address">Verify email address</h2>
+<pre class="highlight http"><code><span class="nf">PUT</span> <span class="nn">/email_verification/:email_address/:verification_token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+</code></pre>
+
+<blockquote>
+<p>Success response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
+
+{
+    "message": "Successful email verification"
+}
+</code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the volunteer doesn&rsquo;t have right to access, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forbidden to access"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cannot_access"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the verification token is unvalidated or expired, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unvalidated or expired verification token"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+           </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unvalidated_expired_verification_token"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Verify volunteer&rsquo;s email. The volunteer must be authenticated successfully.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:email_address*</td>
+<td></td>
+<td>Volunteer&rsquo;s email address</td>
+</tr>
+<tr>
+<td>:verification_code*</td>
+<td></td>
+<td>An unique token for identifying</td>
+</tr>
+</tbody></table>
+
+<!-- verify email address END -->
+
+<h2 id="request-for-a-password-reset">Request for a password reset</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1.0/request_password_reset</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+
+<span class="p">{</span><span class="w">
+   </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin@citi.sinica.edu.tw"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the field is misssing, it will return the following response: </p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request password reset"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"username"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"missing_field"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the email is unvalidated, it will return the following response: </p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request password reset"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"username"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unvalidated_username"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Volunteer forgot his/her password. It sends a password reset email to the volunteer.</p>
+
+<h3 id="attribute">ATTRIBUTE</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email*</td>
+<td></td>
+<td>Volunteer&rsquo;s validated email address</td>
+</tr>
+</tbody></table>
+
+<!-- request for a password reset END -->
+
+<h2 id="reset-passowrd">Reset passowrd</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1.0/reset_password/:email_address/:reset_password_token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+
+<span class="p">{</span><span class="w">
+   </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MY_RESET_PASSW0RD"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the field is misssing, it will return the following response: </p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Password reset"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"password"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"missing_field"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the volunteer&rsquo;s password is unsecure, it will return the following response: </p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Password reset"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"password"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsecure_password"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the volunteer&rsquo;s email or reset passowrd are unvalidated, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not validated token"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cannot_access"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="parameter">PARAMETER</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:email_address*</td>
+<td></td>
+<td>Volunteer&rsquo;s email address</td>
+</tr>
+<tr>
+<td>:reset_password_token*</td>
+<td></td>
+<td>The unique reset password token</td>
+</tr>
+</tbody></table>
+
+<h3 id="attribute">ATTRIBUTE</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>password*</td>
+<td></td>
+<td>Volunteer&rsquo;s new password (8 ~ 255 characters)</td>
+</tr>
+</tbody></table>
+
+<!-- reset password reset END -->
+
+<h2 id="changes-his-her-own-password">Changes his/her own password</h2>
+<pre class="highlight http"><code><span class="nf">PUT</span> <span class="nn">/users/me/password</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+
+<span class="p">{</span><span class="w">
+   </span><span class="nt">"existing_passowrd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MYPASSW0RD"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"new_password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MY_NEW_PASSWoRD"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the volunteer doesn&rsquo;t have right to access (ex. <code class="prettyprint">existing_password</code> is not correct), it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forbidden to access"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cannot_access"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Volunteer changes his/her own password.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>existing_passowrd*</td>
+<td></td>
+<td>Volunteer&rsquo;s existing password (8 ~ 255 characters)</td>
+</tr>
+<tr>
+<td>new_password*</td>
+<td></td>
+<td>Volunteer&rsquo;s new password (8 ~ 255 characters)</td>
+</tr>
+</tbody></table>
+
+<!-- Change his/her own password END -->
+
+          <h1 id="profile">Profile</h1>
+
+<h2 id="update-profile">Update profile</h2>
+<pre class="highlight http"><code><span class="nf">PUT</span> <span class="nn">/users/me</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+
+<span class="p">{</span><span class="w">
+   </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0988123456"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"emergency_contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Johnson Su"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"emergency_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0978123456"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jim"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"birth_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2015</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name_zh_tw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"臺北市"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name_en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Taipei City"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128 Academia Road, Section 2, Nankang Dist."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone_number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0988123456"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin@citi.sinica.edu.tw"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emergency_contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Johnson Su"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emergency_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0978123456"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"introduction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I’m a genius. I Work on Data science/analytics and have excellent skills with Matlab and Ruby programming. My hobbies is sporting."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"experience"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/exeperience"</span><span class="w"> 
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"education"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/education"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"skills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Swimming"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="w">            
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Programming"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"equipment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Scooter"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Camera"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/projects"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"processes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"participating_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"participated_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/proccesses"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/upload/image/avatar/jimlin_366b4c757bff8643b9f97441a974d94d42f5877b.jpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-22 11:38:04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-20 22:30:47"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the volunteer doesn&rsquo;t have right to access, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forbidden to access"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cannot_access"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Update volunteer&rsquo;s own profile.</p>
+
+<h3 id="attribute">ATTRIBUTE</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>last_name</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>birth_year</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>gender</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>city</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>address</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>emergency_contact</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>emergency_phone</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><em>Note: If volunteer wants to change his/her password, please invoke /users/me/password API endpoint.</em></p>
+
+<!-- update profile END -->
+
+<h2 id="upload-a-new-avatar-image">Upload a new avatar image</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/users/me/avatar</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">multipart/form-data; boundary=Boundary_5_1873319439_1443827312034</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+
+--Boundary_5_1873319439_1443827312034
+Content-Type: image/jpeg
+Content-Disposition: form-data; filename="jimlin_avatar.jpg"; name="avatar"
+
+...(binary bytes of the image)...
+--Boundary_5_1873319439_1443827312034--
+</code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+
+<p>The <code class="prettyprint">skip_profile</code> value is <code class="prettyprint">false</code>. It will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jim"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"birth_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2015</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name_zh_tw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"臺北市"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name_en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Taipei City"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128 Academia Road, Section 2, Nankang Dist."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone_number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0988123456"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin@citi.sinica.edu.tw"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emergency_contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Johnson Su"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emergency_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0978123456"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"introduction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I’m a genius. I Work on Data science/analytics and have excellent skills with Matlab and Ruby programming. My hobbies is sporting."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"experience"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/exeperience"</span><span class="w"> 
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"education"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/education"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"skills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Swimming"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="w">            
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Programming"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"equipment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Scooter"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Camera"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/projects"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"processes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"participating_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"participated_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/proccesses"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/upload/image/avatar/jimlin_366b4c757bff8643b9f97441a974d94d42f5877b.jpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-22 11:38:04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-20 22:30:47"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The <code class="prettyprint">skip_profile</code> value is <code class="prettyprint">true</code> or not be set (default value is <code class="prettyprint">true</code>). It will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/upload/image/avatar/jimlin_366b4c757bff8643b9f97441a974d94d42f5877b.jpeg"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the volunteer doesn&rsquo;t have right to access, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forbidden to access"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cannot_access"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the image is uncorrect, it will return the following response: </p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Something wrong"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unable_to_upload_avatar"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Upload volunteer&rsquo;s own avatar image.</p>
+
+<p>The header attribute <code class="prettyprint">Content-Type</code> value is <code class="prettyprint">multipart/form-data</code>.</p>
+
+<p>In the future, the endpoint may support base64 encoded image data.</p>
+
+<h3 id="attribute">ATTRIBUTE</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>avatar*</td>
+<td></td>
+<td>A binary raw data. It supports JPEG, JPG and PNG type.</td>
+</tr>
+<tr>
+<td>skip_profile</td>
+<td>false</td>
+<td>If the value is true, it will skip to return volunteer&rsquo;s profile object.</td>
+</tr>
+</tbody></table>
+
+<!-- upload a new avatar image END -->
+
+<h2 id="get-experience">Get experience</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/users/me/experience</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+</code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"experience"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"experience_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin_1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Academia Sinica"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Research Assistant"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"start_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"end_year"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the volunteer doesn&rsquo;t have right to access, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forbidden to access"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cannot_access"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Get volunteer&rsquo;s his/her own existing experience.</p>
+
+<p>The response <code class="prettyprint">experience</code> object is an array type.</p>
+
+<!-- get experience END -->
+
+<h2 id="add-a-new-experience">Add a new experience</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/users/me/experience</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Academia Sinica"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Research Assistant"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end_year"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+
+<p>It will return the following response and include the experience id:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"experience_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin_1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the attribute is missing, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Experience"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"job_title"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"missing_field"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Volunteer adds a new experience.</p>
+
+<h3 id="attribute">ATTRIBUTE</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name*</td>
+<td></td>
+<td>Company name in the experience</td>
+</tr>
+<tr>
+<td>job_title*</td>
+<td></td>
+<td>Job title in the experience</td>
+</tr>
+<tr>
+<td>start_year*</td>
+<td></td>
+<td>Begin year in the exeperience</td>
+</tr>
+<tr>
+<td>end_year</td>
+<td>null</td>
+<td>End year in the exeperience</td>
+</tr>
+</tbody></table>
+
+<!-- add a new experience END -->
+
+<h2 id="update-an-experience">Update an experience</h2>
+<pre class="highlight http"><code><span class="nf">PUT</span> <span class="nn">/users/me/experience/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"experience_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin_1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Academia Sinica"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Research Assistant"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end_year"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the attribute is missing, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Experience"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"job_title"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"missing_field"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the experience id doesn&rsquo;t exist, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to find experience"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unable_to_find_experience"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the volunteer doesn&rsquo;t have right to access the resource, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not have right to access"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cannot_access"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Volunteer updates his/her own existing expereience.</p>
+
+<h3 id="attribute">ATTRIBUTE</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>experience_id*</td>
+<td></td>
+<td>The experience id</td>
+</tr>
+<tr>
+<td>name*</td>
+<td></td>
+<td>Company name in the experience</td>
+</tr>
+<tr>
+<td>job_title*</td>
+<td></td>
+<td>Job title in the experience</td>
+</tr>
+<tr>
+<td>start_year*</td>
+<td></td>
+<td>Begin year in the exeperience</td>
+</tr>
+<tr>
+<td>end_year</td>
+<td>null</td>
+<td>End year in the exeperience</td>
+</tr>
+</tbody></table>
+
+<!-- Update an experience END -->
+
+<h2 id="delete-an-experience">Delete an experience</h2>
+<pre class="highlight http"><code><span class="nf">DELETE</span> <span class="nn">/users/me/experience/:experience_id</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+</code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the attribute is missing, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Experience"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"job_title"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"missing_field"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the experience id doesn&rsquo;t exist, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to find the experience"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unable_to_find_experience"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the volunteer doesn&rsquo;t have right to access the resource, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not have right to access"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cannot_access"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Volunteer deletes his/her own existing expereience.</p>
+
+<h3 id="parameter">PARAMETER</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:experience_id*</td>
+<td></td>
+<td>The experience id which volunteer wants to delete</td>
+</tr>
+</tbody></table>
+
+<!-- Delete an experience END -->
+
+<h2 id="get-education">Get education</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/users/me/education</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+</code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"education"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"education_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin_1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"school"</span><span class="p">:</span><span class="w"> </span><span class="s2">"National Cheng Kung University"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"degree"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field_of_study"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Computer Science"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"start_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2012</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"end_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the volunteer doesn&rsquo;t have right to access, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forbidden to access"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cannot_access"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Get volunteer&rsquo;s his/her own existing education.</p>
+
+<p>The response <code class="prettyprint">education</code> object is an array type.</p>
+
+<!-- get experience END -->
+
+<h2 id="add-a-new-education">Add a new education</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/users/me/education</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"school"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NCKU"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"degree"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"field_of_study"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Computer Science"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2012</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+
+<p>It will return the following response, it includes the experience id:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"education_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin_1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the attribute is missing, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Education"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"degree"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"missing_field"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Volunteer adds a new education.</p>
+
+<h3 id="attribute">ATTRIBUTE</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>school*</td>
+<td></td>
+<td>School name</td>
+</tr>
+<tr>
+<td>degree*</td>
+<td></td>
+<td>The education degree</td>
+</tr>
+<tr>
+<td>field_of_study</td>
+<td>null</td>
+<td>The major field of study</td>
+</tr>
+<tr>
+<td>start_year*</td>
+<td></td>
+<td>Start year in the education</td>
+</tr>
+<tr>
+<td>end_year</td>
+<td>null</td>
+<td>End year in the education. If until now, it is optional.</td>
+</tr>
+</tbody></table>
+
+<!-- add a new education END -->
+
+<h2 id="update-an-education">Update an education</h2>
+
+<table><thead>
+<tr>
+<th>Endpoint</th>
+<th>Action</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&ldquo;</td>
+<td>PUT</td>
+<td></td>
+</tr>
+</tbody></table>
+<pre class="highlight http"><code><span class="nf">PUT</span> <span class="nn">/users/me/education</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"education_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin_1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"school"</span><span class="p">:</span><span class="w"> </span><span class="s2">"National Cheng Kung University"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"degree"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"field_of_study"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Computer Science"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2012</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the attribute is missing, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Education"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"degree"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"missing_field"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the experience id doesn&rsquo;t exist, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to find education"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unable_to_find_education"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the volunteer doesn&rsquo;t have right to access the resource, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not have right to access"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cannot_access"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Volunteer updates his/her own existing education record</p>
+
+<h3 id="attribute">ATTRIBUTE</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>education_id*</td>
+<td></td>
+<td>The education ID</td>
+</tr>
+<tr>
+<td>school*</td>
+<td></td>
+<td>School name</td>
+</tr>
+<tr>
+<td>degree*</td>
+<td></td>
+<td>The education degree</td>
+</tr>
+<tr>
+<td>field_of_study</td>
+<td>null</td>
+<td>The major field of study</td>
+</tr>
+<tr>
+<td>start_year*</td>
+<td></td>
+<td>Start year in the education</td>
+</tr>
+<tr>
+<td>end_year</td>
+<td>null</td>
+<td>End year in the education. If until now, it is optional.</td>
+</tr>
+</tbody></table>
+
+<!-- add a new education END -->
+
+<h2 id="delete-an-education">Delete an education</h2>
+<pre class="highlight http"><code><span class="nf">DELETE</span> <span class="nn">/users/me/experience/:education_id</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+</code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the experience id doesn&rsquo;t exist, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to find education"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unable_to_find_education"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the volunteer doesn&rsquo;t have right to access the resource, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not have right to access"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cannot_access"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Volunteer deletes his/her own existing education.</p>
+
+<h3 id="parameter">Parameter</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:education_id*</td>
+<td></td>
+<td>The education ID</td>
+</tr>
+</tbody></table>
+
+<!-- delete an education END -->
+
+<h2 id="update-skills">Update skills</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/users/me/skills</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="err">skills:</span><span class="w"> </span><span class="err">[</span><span class="w">
+        </span><span class="nt">"Swimming"</span><span class="err">,</span><span class="w">
+        </span><span class="nt">"Programming"</span><span class="err">,</span><span class="w">
+        </span><span class="nt">"Rope rescue"</span><span class="w">
+    </span><span class="err">],</span><span class="w">
+    </span><span class="err">existing_skill_index</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="mi">1</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Successful response</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</code></pre>
+
+<blockquote>
+<p>Failure response</p>
+
+<p>If there is a missing field, it will return the following request:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Skills"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"existing_skill_index"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"missing_field"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If something wrong happens, it will return the following request:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to execute"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+           </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"the_exceed_index_value"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><strong>It&rsquo;s NOT CONFIRMED.</strong></p>
+
+<p>Update volunteer&rsquo;s skills.</p>
+
+<h3 id="attribute">ATTRIBUTE</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>skills*</td>
+<td></td>
+<td>It&rsquo;s an array type.</td>
+</tr>
+<tr>
+<td>existing_skill_index*</td>
+<td></td>
+<td>It means the <code class="prettyprint">skills</code> array index of existing skills.</td>
+</tr>
+</tbody></table>
+
+<h3 id="request-description">Request description</h3>
+
+<p>The <code class="prettyprint">Swimming</code> and <code class="prettyprint">Programming</code> skills exist and <code class="prettyprint">Rop rescue</code> skill doesn&rsquo;t exist. The <code class="prettyprint">existing_skill_index</code> means the <code class="prettyprint">skills</code> array index of existing skills.</p>
+
+<!-- update skill END -->
+
+<h2 id="update-equipment">Update equipment</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/users/me/equipment</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+<span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"equipment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Car"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Scooter"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Camera"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"existing_equipment_index"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If there is a missing field, it will return the following request:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Skills"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"existing_equipment_index"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"missing_field"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If something wrong happens, it will return the following request:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to execute"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+           </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"the_exceed_index_value"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Delete volunteer&rsquo;s equipment.</p>
+
+<h3 id="attribute">ATTRIBUTE</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>equipment*</td>
+<td></td>
+<td>It&rsquo;s an array type.</td>
+</tr>
+<tr>
+<td>existing_equipment_index*</td>
+<td></td>
+<td>It means the <code class="prettyprint">equipment</code> array index of existing skills.</td>
+</tr>
+</tbody></table>
+
+<h3 id="request-description">Request description</h3>
+
+<p>The <code class="prettyprint">Car</code>, <code class="prettyprint">Scooter</code> and <code class="prettyprint">Camera</code> equipment exist. The <code class="prettyprint">existing_equipment_index</code> means the <code class="prettyprint">equipment</code> array index of existing equipment.</p>
+
+<!-- update equipment END -->
+
+<h2 id="get-country-cities">Get country cities</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/country/:country_name/:state_name/cities?locale=zh-TW</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+</code></pre>
+
+<blockquote>
+<p>Successful response</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"country_zh_tw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"臺灣"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"臺北市"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"新北市"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"桃園市"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"臺中市"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"臺南市"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"新竹市"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"嘉義市"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"新竹縣"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"苗栗縣"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"新北市"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"彰化縣"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"南投縣"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"雲林縣"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"嘉義縣"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"屏東縣"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"花蓮縣"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"臺東縣"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"澎湖縣"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"金門縣"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"連江縣"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Failure response</p>
+
+<p>If the country or state name don&rsquo;t exist, it will return the following response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to find cities"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unable_to_find_cities"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><strong>NOTICE: This endpoint and result format MAY be changed!</strong></p>
+
+<h3 id="parameter">PARAMETER</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>locale</td>
+<td>en-US</td>
+<td>The language and country codes</td>
+</tr>
+</tbody></table>
+
+<p>The language codes are two-letter lowercase ISO language codes (such as &quot;zh&rdquo;) as defined by <a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a>. 
+The country codes are two-letter uppercase ISO country codes (such as &ldquo;TW&rdquo;) as defined by <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3">ISO 3166-1</a></p>
+
+<!-- get country cities END -->
+
+<h2 id="get-skill-keyword">Get skill keyword</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/skill_candidates/:keyword</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json`</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09`</span>
+</code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Disaster Survellience"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"head_line"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;strong&gt;Dis&lt;/strong&gt;aster Survellience"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Disaster Recovery"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"head_line"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;strong&gt;Dis&lt;/strong&gt;aster Recovery"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the keyword is not found, it will return the following response and the result array is empty:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+</blockquote>
+
+<p>The API endpoint can search the skill keyword.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:keyword*</td>
+<td></td>
+<td>The searched keyword</td>
+</tr>
+</tbody></table>
+
+<!-- Get skill keyword -->
+
+<h2 id="get-equipment-keyword">Get equipment keyword</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/equipment_candidates/:keyword</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json`</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09`</span>
+</code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"head_line"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;strong&gt;Ca&lt;/strong&gt;r"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Camera"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"head_line"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;strong&gt;Ca&lt;/strong&gt;mera"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If the keyword is not found, it will return the following response and the result array is empty:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+</blockquote>
+
+<p>The API endpoint can search the skill keyword.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:keyword*</td>
+<td></td>
+<td>The searched keyword</td>
+</tr>
+</tbody></table>
+
+<!-- Get equipment keyword -->
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="http">http</a>
           </div>
       </div>
     </div>
