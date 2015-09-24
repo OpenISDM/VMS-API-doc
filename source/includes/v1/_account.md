@@ -212,7 +212,7 @@ DELETE /api/v1.0/auth HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-AUTH-ACCESS-TOKEN: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 ```
 
 > Successful response:
@@ -239,7 +239,7 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-Volunteer logout the system. The `X-VMS-AUTH-ACCESS-TOKEN` will be deleted.
+Volunteer logout the system. The `X-VMS-Auth-Token` will be deleted.
 
 <!-- logout END -->
 
@@ -251,7 +251,7 @@ GET /api/v1.0/users/me HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-AUTH-ACCESS-TOKEN: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 ```
 
 > Successful response:
@@ -339,7 +339,7 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-If the `X-VMS-AUTH-ACCESS-TOKEN` is validated, it will return the volunteer's profile object.
+If the `X-VMS-Auth-Token` is validated, it will return the volunteer's profile object.
 
 <!-- authentication END -->
 
@@ -350,7 +350,7 @@ POST /email_verification HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-AUTH-ACCESS-TOKEN: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 {
     "email_address": "jimlin@citi.sinica.edu.tw"
@@ -405,7 +405,7 @@ PUT /email_verification/:email_address/:verification_token HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-AUTH-ACCESS-TOKEN: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 ```
 
 > Success response:
@@ -620,3 +620,52 @@ Content-Type: application/json;charset=UTF-8
 
 <!-- reset password reset END -->
 
+
+## Changes his/her own password
+
+```http
+PUT /users/me/password HTTP/1.1
+Content-Type: application/json
+Host: vms.app
+X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+
+{
+   "existing_passowrd": "MYPASSW0RD",
+   "new_password": "MY_NEW_PASSWoRD"
+}
+```
+
+> Successful response:
+
+```http
+HTTP/1.1 204 No Content
+```
+
+> Failure response:
+
+> If the volunteer doesn't have right to access (ex. `existing_password` is not correct), it will return the following response:
+
+```http
+HTTP/1.1 403 Forbidden
+Content-Type: application/json;charset=UTF-8
+
+{
+    "message": "Forbidden to access",
+    "errors": [
+        {
+            "code": "cannot_access"
+        }
+    ]
+}
+```
+
+Volunteer changes his/her own password.
+
+| Attribute | Default | Description |
+|-----------|---------|-------------|
+| existing_passowrd* |  | Volunteer's existing password (8 ~ 255 characters) |
+| new_password* |  | Volunteer's new password (8 ~ 255 characters) |
+
+
+<!-- Change his/her own password END -->
