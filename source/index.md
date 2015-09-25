@@ -23,7 +23,7 @@ search: true
 
 If you have any problems, please create an issue on [GitHub](https://github.com/OpenISDM/VMS-API-doc).
 
-The POST and PUT requests body must be JSON format and the Content-Type header also set to application/json. In addition, for authenticating request, the X-VMS-API-Key set to your application key.
+The **POST** and **PUT** requests body must be JSON format and the `Content-Type` header also set to `application/json`. In addition, for authenticating request, the `X-VMS-API-Key` set to your application key.
 
 On the following *PARAMETER* or *ATTRIBUTE*, if the field contains with *' \* '*, it means it is a mandatory field.
 
