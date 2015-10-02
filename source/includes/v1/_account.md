@@ -33,7 +33,6 @@ X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 ```http
 HTTP/1.1 201 Created
 Content-Type: application/json;charset=UTF-8
-Location: https://vms.app/api/v1.0/users/me
 
 {
     "href": "https://vms.app/api/v1.0/users/me",
@@ -54,7 +53,6 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "resource": "Register",
             "field": ["username", "password"],
             "code": "missing_field"
         }
@@ -72,7 +70,6 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "resource": "Register",
             "field": ["passsword"],
             "code": "not_enough_password_strength"
         }
@@ -90,7 +87,6 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "resource": "Register",
             "field": ["username", "password"],
             "code": "used_field"
         }
@@ -148,7 +144,6 @@ X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Location: https://vms.app/api/v1.0/users/me
 
 {
     "href": "https://vms.app/api/v1.0/users/me",
@@ -184,7 +179,6 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "resource": "Login",
             "field": ["username", "password"],
             "code": "missing_field"
         }
@@ -495,7 +489,6 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "resource": "Request password reset",
             "field": ["username"],
             "code": "missing_field"
         }
@@ -513,7 +506,6 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "resource": "Request password reset",
             "field": ["username"],
             "code": "unvalidated_username"
         }
@@ -563,7 +555,6 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "resource": "Password reset",
             "field": ["password"],
             "code": "missing_field"
         }
@@ -581,7 +572,6 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "resource": "Password reset",
             "field": ["password"],
             "code": "unsecure_password"
         }

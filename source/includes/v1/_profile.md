@@ -369,7 +369,6 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "resource": "Experience",
             "field": ["job_title"],
             "code": "missing_field"
         }
@@ -428,7 +427,6 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "resource": "Experience",
             "field": ["job_title"],
             "code": "missing_field"
         }
@@ -513,7 +511,6 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "resource": "Experience",
             "field": ["job_title"],
             "code": "missing_field"
         }
@@ -664,7 +661,6 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "resource": "Education",
             "field": ["degree"],
             "code": "missing_field"
         }
@@ -728,7 +724,6 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "resource": "Education",
             "field": ["degree"],
             "code": "missing_field"
         }
@@ -886,7 +881,6 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "resource": "Skills",
             "field": ["existing_skill_index"],
             "code": "missing_field"
         }
@@ -970,7 +964,6 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "resource": "Skills",
             "field": ["existing_equipment_index"],
             "code": "missing_field"
         }
