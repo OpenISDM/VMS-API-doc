@@ -80,7 +80,7 @@ Content-Type: application/json;charset=UTF-8
 > If the username or email address was used, it will return the following response:
 
 ```http
-HTTP/1.1 409 Conflict
+HTTP/1.1 422 Unprocessable Entity
 Content-Type: application/json;charset=UTF-8
 
 {
@@ -395,7 +395,7 @@ Resend a verification email. A new verification email will send to volunteer's m
 ## Verify email address
 
 ```http
-PUT /email_verification/:email_address/:verification_token HTTP/1.1
+GET /email_verification/:email_address/:verification_token HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
