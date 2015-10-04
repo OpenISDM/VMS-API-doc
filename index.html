@@ -226,7 +226,7 @@
 <blockquote>
 <p>If the username or email address was used, it will return the following response:</p>
 </blockquote>
-<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">409</span> <span class="ne">Conflict</span>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
 
 <span class="p">{</span><span class="w">
@@ -620,7 +620,7 @@
 <!-- resend email address verification END -->
 
 <h2 id="verify-email-address">Verify email address</h2>
-<pre class="highlight http"><code><span class="nf">PUT</span> <span class="nn">/email_verification/:email_address/:verification_token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/email_verification/:email_address/:verification_token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
 <span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
