@@ -851,12 +851,12 @@ X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 {
-    skills: [
+    "skills": [
         "Swimming",
         "Programming",
         "Rope rescue"
     ],
-    existing_skill_indexes: [
+    "existing_skill_indexes": [
         0,
         1
     ]
@@ -913,11 +913,11 @@ Update volunteer's skills.
 | Attribute | Default | Description |
 |-----------|---------|-------------|
 | skills*   |         | It's an array type.  |
-| existing_skill_index* | | It means the `skills` array index of existing skills. |
+| existing_skill_indexes* | | It means the `skills` array index of existing skills. |
 
 ### Request description
 
-The `Swimming` and `Programming` skills exist and `Rop rescue` skill doesn't exist. The `existing_skill_index` means the `skills` array index of existing skills.
+The `Swimming` and `Programming` skills exist and `Rop rescue` skill doesn't exist. The `existing_skill_indexes` means the `skills` array index of existing skills.
 
 <!-- update skill END -->
 
@@ -938,7 +938,7 @@ X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c
         "Scooter",
         "Camera"
     ],
-    "existing_equipment_index": [
+    "existing_equipment_indexes": [
         0,
         1,
         2
@@ -964,7 +964,7 @@ Content-Type: application/json;charset=UTF-8
     "message": "Validation failed",
     "errors": [
         {
-            "field": ["existing_equipment_index"],
+            "field": ["existing_equipment_indexes"],
             "code": "missing_field"
         }
     ]
@@ -998,7 +998,7 @@ Delete volunteer's equipment.
 
 ### Request description
 
-The `Car`, `Scooter` and `Camera` equipment exist. The `existing_equipment_index` means the `equipment` array index of existing equipment.
+The `Car`, `Scooter` and `Camera` equipment exist. The `existing_equipment_indexes` means the `equipment` array index of existing equipment.
 
 <!-- update equipment END -->
 
