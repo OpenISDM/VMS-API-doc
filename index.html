@@ -1938,12 +1938,12 @@ Content-Disposition: form-data; filename="jimlin_avatar.jpg"; name="avatar"
 <span class="na">X-VMS-Auth-Token</span><span class="p">:</span> <span class="s">jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="err">skills:</span><span class="w"> </span><span class="err">[</span><span class="w">
-        </span><span class="nt">"Swimming"</span><span class="err">,</span><span class="w">
-        </span><span class="nt">"Programming"</span><span class="err">,</span><span class="w">
-        </span><span class="nt">"Rope rescue"</span><span class="w">
-    </span><span class="err">],</span><span class="w">
-    </span><span class="err">existing_skill_indexes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nt">"skills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Swimming"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Programming"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Rope rescue"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"existing_skill_indexes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="mi">1</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -2010,7 +2010,7 @@ Content-Disposition: form-data; filename="jimlin_avatar.jpg"; name="avatar"
 <td>It&rsquo;s an array type.</td>
 </tr>
 <tr>
-<td>existing_skill_index*</td>
+<td>existing_skill_indexes*</td>
 <td></td>
 <td>It means the <code class="prettyprint">skills</code> array index of existing skills.</td>
 </tr>
@@ -2018,7 +2018,7 @@ Content-Disposition: form-data; filename="jimlin_avatar.jpg"; name="avatar"
 
 <h3 id="request-description">Request description</h3>
 
-<p>The <code class="prettyprint">Swimming</code> and <code class="prettyprint">Programming</code> skills exist and <code class="prettyprint">Rop rescue</code> skill doesn&rsquo;t exist. The <code class="prettyprint">existing_skill_index</code> means the <code class="prettyprint">skills</code> array index of existing skills.</p>
+<p>The <code class="prettyprint">Swimming</code> and <code class="prettyprint">Programming</code> skills exist and <code class="prettyprint">Rop rescue</code> skill doesn&rsquo;t exist. The <code class="prettyprint">existing_skill_indexes</code> means the <code class="prettyprint">skills</code> array index of existing skills.</p>
 
 <!-- update skill END -->
 
@@ -2035,7 +2035,7 @@ Content-Disposition: form-data; filename="jimlin_avatar.jpg"; name="avatar"
         </span><span class="s2">"Scooter"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Camera"</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"existing_equipment_index"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nt">"existing_equipment_indexes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="mi">2</span><span class="w">
@@ -2061,7 +2061,7 @@ Content-Disposition: form-data; filename="jimlin_avatar.jpg"; name="avatar"
     </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation failed"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"existing_equipment_index"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"existing_equipment_indexes"</span><span class="p">],</span><span class="w">
             </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"missing_field"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -2109,7 +2109,7 @@ Content-Disposition: form-data; filename="jimlin_avatar.jpg"; name="avatar"
 
 <h3 id="request-description">Request description</h3>
 
-<p>The <code class="prettyprint">Car</code>, <code class="prettyprint">Scooter</code> and <code class="prettyprint">Camera</code> equipment exist. The <code class="prettyprint">existing_equipment_index</code> means the <code class="prettyprint">equipment</code> array index of existing equipment.</p>
+<p>The <code class="prettyprint">Car</code>, <code class="prettyprint">Scooter</code> and <code class="prettyprint">Camera</code> equipment exist. The <code class="prettyprint">existing_equipment_indexes</code> means the <code class="prettyprint">equipment</code> array index of existing equipment.</p>
 
 <!-- update equipment END -->
 
