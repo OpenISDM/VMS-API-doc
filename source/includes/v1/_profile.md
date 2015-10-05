@@ -856,7 +856,7 @@ X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c
         "Programming",
         "Rope rescue"
     ],
-    existing_skill_index: [
+    existing_skill_indexes: [
         0,
         1
     ]
