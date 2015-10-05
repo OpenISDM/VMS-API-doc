@@ -994,7 +994,7 @@ Delete volunteer's equipment.
 | Attribute | Default | Description |
 |-----------|---------|-------------|
 | equipment*   |         | It's an array type.  |
-| existing_equipment_index* | | It means the `equipment` array index of existing skills. |
+| existing_equipment_indexes* | | It means the `equipment` array index of existing skills. |
 
 ### Request description
 
