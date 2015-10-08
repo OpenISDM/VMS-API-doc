@@ -3,7 +3,7 @@
 ## Register
 
 ```http
-POST /api/v1.0/register HTTP/1.1
+POST /api/register HTTP/1.1
 Host: vms.app
 Content-Type: application/json
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -35,7 +35,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json;charset=UTF-8
 
 {
-    "href": "https://vms.app/api/v1.0/users/me",
+    "href": "https://vms.app/api/users/me",
     "username": "jimlin",
     "auth_access_token": "56f4da226eb22caa0633023bfdd402658e5c6501c972e83bfb2866f2112b103f"
 }
@@ -128,7 +128,7 @@ Volunteer registers a new account. The system will send a verification email to 
 
 
 ```http
-POST /api/v1.0/auth HTTP/1.1
+POST /api/auth HTTP/1.1
 Host: vms.app
 Content-Type: application/json
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -146,7 +146,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 
 {
-    "href": "https://vms.app/api/v1.0/users/me",
+    "href": "https://vms.app/api/users/me",
     "auth_access_token": "56f4da226eb22caa0633023bfdd402658e5c6501c972e83bfb2866f2112b103f"
 }
 ```
@@ -202,7 +202,7 @@ Volunteer logs into the system with credentials.
 
 
 ```http
-DELETE /api/v1.0/auth HTTP/1.1
+DELETE /api/auth HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -241,7 +241,7 @@ Volunteer logout the system. The `Authorization` will be deleted.
 ## Authentication & retrieve volunteer's own account
 
 ```http
-GET /api/v1.0/users/me HTTP/1.1
+GET /api/users/me HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -272,10 +272,10 @@ Content-Type: application/json;charset=UTF-8
     "emergency_phone": "0919119119",
     "introduction": "I’m a genius. I Work on Data science/analytics and have excellent skills with Matlab and Ruby programming. My hobbies is sporting.",
     "experience": {
-        "href": "https://vms.app/api/v1.0/users/me/exeperience" 
+        "href": "https://vms.app/api/users/me/exeperience" 
     },
     "education": {
-        "href": "https://vms.app/api/v1.0/users/me/education"
+        "href": "https://vms.app/api/users/me/education"
     },
     "skills": [
         {
@@ -302,12 +302,12 @@ Content-Type: application/json;charset=UTF-8
         }
     ],
     "projects": {
-        "href": "https://vms.app/api/v1.0/users/me/projects"
+        "href": "https://vms.app/api/users/me/projects"
     },
     "processes": {
         "participating_number": 3,
         "participated_number": 8,
-        "href": "https://vms.app/api/v1.0/users/me/proccesses"
+        "href": "https://vms.app/api/users/me/proccesses"
     },
     "avatar_url": "https://vms.app/upload/image/avatar/jimlin_366b4c757bff8643b9f97441a974d94d42f5877b.jpeg",
     "updated_at": "2015-09-22 11:38:04",
@@ -461,7 +461,7 @@ Verify volunteer's email. The volunteer must be authenticated successfully.
 ## Request for a password reset
 
 ```http
-POST /api/v1.0/request_password_reset HTTP/1.1
+POST /api/request_password_reset HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -527,7 +527,7 @@ Volunteer forgot his/her password. It sends a password reset email to the volunt
 ## Reset passowrd
 
 ```http
-POST /api/v1.0/reset_password/:email_address/:reset_password_token HTTP/1.1
+POST /api/reset_password/:email_address/:reset_password_token HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
