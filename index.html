@@ -81,8 +81,12 @@
 <td>An application API key.</td>
 </tr>
 <tr>
-<td>X-VMS-Auth-Token</td>
-<td>The client authentication token for identifying user.</td>
+<td>Accept</td>
+<td>The header value is application/x.vms.v1.0+json</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>The client authentication token for identifying user in JWT (JSON Web Token).</td>
 </tr>
 </tbody></table>
 
@@ -149,7 +153,7 @@
           <h1 id="account">Account</h1>
 
 <h2 id="register">Register</h2>
-<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1.0/register</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/register</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
@@ -181,7 +185,7 @@
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/users/me"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"auth_access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56f4da226eb22caa0633023bfdd402658e5c6501c972e83bfb2866f2112b103f"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -342,7 +346,7 @@
 <!-- register END -->
 
 <h2 id="login">Login</h2>
-<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1.0/auth</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/auth</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
@@ -360,7 +364,7 @@
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/users/me"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"auth_access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56f4da226eb22caa0633023bfdd402658e5c6501c972e83bfb2866f2112b103f"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -426,7 +430,7 @@
 <!-- login END -->
 
 <h2 id="logout">Logout</h2>
-<pre class="highlight http"><code><span class="nf">DELETE</span> <span class="nn">/api/v1.0/auth</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http"><code><span class="nf">DELETE</span> <span class="nn">/api/auth</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
 <span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
@@ -462,7 +466,7 @@
 <!-- logout END -->
 
 <h2 id="authentication-amp-retrieve-volunteer-39-s-own-account">Authentication &amp; retrieve volunteer&rsquo;s own account</h2>
-<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/api/v1.0/users/me</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/api/users/me</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
 <span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
@@ -493,10 +497,10 @@
     </span><span class="nt">"emergency_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0919119119"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"introduction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I’m a genius. I Work on Data science/analytics and have excellent skills with Matlab and Ruby programming. My hobbies is sporting."</span><span class="p">,</span><span class="w">
     </span><span class="nt">"experience"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/exeperience"</span><span class="w"> 
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/users/me/exeperience"</span><span class="w"> 
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"education"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/education"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/users/me/education"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"skills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -523,12 +527,12 @@
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/projects"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/users/me/projects"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"processes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"participating_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
         </span><span class="nt">"participated_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/v1.0/users/me/proccesses"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/api/users/me/proccesses"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/upload/image/avatar/jimlin_366b4c757bff8643b9f97441a974d94d42f5877b.jpeg"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-22 11:38:04"</span><span class="p">,</span><span class="w">
@@ -695,7 +699,7 @@
 <!-- verify email address END -->
 
 <h2 id="request-for-a-password-reset">Request for a password reset</h2>
-<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1.0/request_password_reset</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/request_password_reset</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
 <span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
@@ -768,7 +772,7 @@
 <!-- request for a password reset END -->
 
 <h2 id="reset-passowrd">Reset passowrd</h2>
-<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1.0/reset_password/:email_address/:reset_password_token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/reset_password/:email_address/:reset_password_token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
 <span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
