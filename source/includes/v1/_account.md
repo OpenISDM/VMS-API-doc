@@ -206,7 +206,7 @@ DELETE /api/v1.0/auth HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 ```
 
 > Successful response:
@@ -233,7 +233,7 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-Volunteer logout the system. The `X-VMS-Auth-Token` will be deleted.
+Volunteer logout the system. The `Authorization` will be deleted.
 
 <!-- logout END -->
 
@@ -245,7 +245,7 @@ GET /api/v1.0/users/me HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 ```
 
 > Successful response:
@@ -333,7 +333,7 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-If the `X-VMS-Auth-Token` is validated, it will return the volunteer's profile object.
+If the `Authorization` is validated, it will return the volunteer's profile object.
 
 <!-- authentication END -->
 
@@ -344,7 +344,7 @@ POST /email_verification HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 {
     "email_address": "jimlin@citi.sinica.edu.tw"
@@ -399,7 +399,7 @@ GET /email_verification/:email_address/:verification_token HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 ```
 
 > Success response:
@@ -618,7 +618,7 @@ PUT /users/me/password HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 {
    "existing_passowrd": "MYPASSW0RD",

@@ -7,7 +7,7 @@ PUT /users/me HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 {
    "phone_number": "0988123456",
@@ -130,7 +130,7 @@ POST /users/me/avatar HTTP/1.1
 Content-Type: multipart/form-data; boundary=Boundary_5_1873319439_1443827312034
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 --Boundary_5_1873319439_1443827312034
 Content-Type: image/jpeg
@@ -279,7 +279,7 @@ GET /users/me/experience HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 ```
 
 > Successful response:
@@ -334,7 +334,7 @@ POST /users/me/experience HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 {
     "name": "Academia Sinica",
@@ -398,7 +398,7 @@ PUT /users/me/experience/ HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 {
     "experience_id": "jimlin_1",
@@ -490,7 +490,7 @@ DELETE /users/me/experience/:experience_id HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 ```
 
 > Successful response:
@@ -569,7 +569,7 @@ GET /users/me/education HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 ```
 
 > Successful response:
@@ -625,7 +625,7 @@ The response `education` object is an array type.
 POST /users/me/education HTTP/1.1
 Content-Type: application/json
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 {
     "school": "NCKU",
@@ -694,7 +694,7 @@ Volunteer adds a new education.
 PUT /users/me/education HTTP/1.1
 Content-Type: application/json
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 {
     "education_id": "jimlin_1",
@@ -787,7 +787,7 @@ DELETE /users/me/experience/:education_id HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 ```
 
 > Successful response:
@@ -848,7 +848,7 @@ Volunteer deletes his/her own existing education.
 POST /users/me/skills HTTP/1.1
 Content-Type: application/json
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 {
     "skills": [
@@ -930,7 +930,7 @@ POST /users/me/equipment HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-X-VMS-Auth-Token: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: jimlin:d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 {
     "equipment": [
