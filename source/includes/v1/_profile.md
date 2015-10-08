@@ -40,10 +40,10 @@ Content-Type: application/json;charset=UTF-8
     "emergency_phone": "0978123456",
     "introduction": "I’m a genius. I Work on Data science/analytics and have excellent skills with Matlab and Ruby programming. My hobbies is sporting.",
     "experience": {
-        "href": "https://vms.app/api/v1.0/users/me/exeperience" 
+        "href": "https://vms.app/api/users/me/exeperience" 
     },
     "education": {
-        "href": "https://vms.app/api/v1.0/users/me/education"
+        "href": "https://vms.app/api/users/me/education"
     },
     "skills": [
         {
@@ -70,12 +70,12 @@ Content-Type: application/json;charset=UTF-8
         }
     ],
     "projects": {
-        "href": "https://vms.app/api/v1.0/users/me/projects"
+        "href": "https://vms.app/api/users/me/projects"
     },
     "processes": {
         "participating_number": 3,
         "participated_number": 8,
-        "href": "https://vms.app/api/v1.0/users/me/proccesses"
+        "href": "https://vms.app/api/users/me/proccesses"
     },
     "avatar_url": "https://vms.app/upload/image/avatar/jimlin_366b4c757bff8643b9f97441a974d94d42f5877b.jpeg",
     "updated_at": "2015-09-22 11:38:04",
@@ -167,10 +167,10 @@ Content-Type: application/json;charset=UTF-8
     "emergency_phone": "0978123456",
     "introduction": "I’m a genius. I Work on Data science/analytics and have excellent skills with Matlab and Ruby programming. My hobbies is sporting.",
     "experience": {
-        "href": "https://vms.app/api/v1.0/users/me/exeperience" 
+        "href": "https://vms.app/api/users/me/exeperience" 
     },
     "education": {
-        "href": "https://vms.app/api/v1.0/users/me/education"
+        "href": "https://vms.app/api/users/me/education"
     },
     "skills": [
         {
@@ -197,12 +197,12 @@ Content-Type: application/json;charset=UTF-8
         }
     ],
     "projects": {
-        "href": "https://vms.app/api/v1.0/users/me/projects"
+        "href": "https://vms.app/api/users/me/projects"
     },
     "processes": {
         "participating_number": 3,
         "participated_number": 8,
-        "href": "https://vms.app/api/v1.0/users/me/proccesses"
+        "href": "https://vms.app/api/users/me/proccesses"
     },
     "avatar_url": "https://vms.app/upload/image/avatar/jimlin_366b4c757bff8643b9f97441a974d94d42f5877b.jpeg",
     "updated_at": "2015-09-22 11:38:04",
