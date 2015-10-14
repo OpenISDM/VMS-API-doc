@@ -272,10 +272,10 @@ Content-Type: application/json;charset=UTF-8
     "emergency_phone": "0919119119",
     "introduction": "I’m a genius. I Work on Data science/analytics and have excellent skills with Matlab and Ruby programming. My hobbies is sporting.",
     "experience": {
-        "href": "https://vms.app/api/users/me/exeperience" 
+        "href": "https://vms.app/api/users/me/experiences" 
     },
     "education": {
-        "href": "https://vms.app/api/users/me/education"
+        "href": "https://vms.app/api/users/me/educations"
     },
     "skills": [
         {

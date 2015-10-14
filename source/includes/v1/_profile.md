@@ -40,10 +40,10 @@ Content-Type: application/json;charset=UTF-8
     "emergency_phone": "0978123456",
     "introduction": "I’m a genius. I Work on Data science/analytics and have excellent skills with Matlab and Ruby programming. My hobbies is sporting.",
     "experience": {
-        "href": "https://vms.app/api/users/me/exeperience" 
+        "href": "https://vms.app/api/users/me/exeperiences" 
     },
     "education": {
-        "href": "https://vms.app/api/users/me/education"
+        "href": "https://vms.app/api/users/me/educations"
     },
     "skills": [
         {
@@ -167,10 +167,10 @@ Content-Type: application/json;charset=UTF-8
     "emergency_phone": "0978123456",
     "introduction": "I’m a genius. I Work on Data science/analytics and have excellent skills with Matlab and Ruby programming. My hobbies is sporting.",
     "experience": {
-        "href": "https://vms.app/api/users/me/exeperience" 
+        "href": "https://vms.app/api/users/me/exeperiences" 
     },
     "education": {
-        "href": "https://vms.app/api/users/me/education"
+        "href": "https://vms.app/api/users/me/educations"
     },
     "skills": [
         {
@@ -275,7 +275,7 @@ In the future, the endpoint may support base64 encoded image data.
 ## Get experience
 
 ```http
-GET /users/me/experience HTTP/1.1
+GET /users/me/experiences HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -330,7 +330,7 @@ The response `experience` object is an array type.
 ## Add a new experience
 
 ```http
-POST /users/me/experience HTTP/1.1
+POST /users/me/experiences HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -396,7 +396,7 @@ Volunteer adds a new experience.
 ## Update an experience
 
 ```http
-PUT /users/me/experience/ HTTP/1.1
+PUT /users/me/experiences HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -488,7 +488,7 @@ Volunteer updates his/her own existing expereience.
 ## Delete an experience
 
 ```http
-DELETE /users/me/experience/:id HTTP/1.1
+DELETE /users/me/experiences/:id HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -567,7 +567,7 @@ Volunteer deletes his/her own existing expereience.
 ## Get education
 
 ```http
-GET /users/me/education HTTP/1.1
+GET /users/me/educations HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -624,7 +624,7 @@ The response `education` object is an array type.
 
 
 ```http
-POST /users/me/education HTTP/1.1
+POST /users/me/educations HTTP/1.1
 Content-Type: application/json
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 Authorization: Bearer d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -695,7 +695,7 @@ Volunteer adds a new education.
 
 
 ```http
-PUT /users/me/education HTTP/1.1
+PUT /users/me/educations HTTP/1.1
 Content-Type: application/json
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 Authorization: Bearer d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -787,7 +787,7 @@ Volunteer updates his/her own existing education record
 ## Delete an education
 
 ```http
-DELETE /users/me/experience/:id HTTP/1.1
+DELETE /users/me/experiences/:id HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
