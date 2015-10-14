@@ -291,7 +291,7 @@ Content-Type: application/json;charset=UTF-8
 {
     "experience": [
         {
-            "experience_id": "jimlin_1",
+            "id": 1,
             "name": "Academia Sinica",
             "job_title": "Research Assistant",
             "start_year": 2014,
@@ -353,7 +353,9 @@ HTTP/1.1 201 Created
 Content-Type: application/json;charset=UTF-8
 
 {
-    "experience_id": "jimlin_1"
+    "experience" : {
+        "id": 1
+    }
 }
 ```
 
@@ -401,7 +403,7 @@ X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 Authorization: Bearer d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 {
-    "experience_id": "jimlin_1",
+    "id": 1,
     "name": "Academia Sinica",
     "job_title": "Research Assistant",
     "start_year": 2014,
@@ -472,7 +474,7 @@ Volunteer updates his/her own existing expereience.
 
 | Attribute | Default | Description |
 |-----------|---------|-------------|
-| experience_id* | | The experience id |
+| experience* | | The experience id |
 | name* |  | Company name in the experience |
 | job_title* | | Job title in the experience |
 | start_year* | | Begin year in the exeperience |
@@ -486,7 +488,7 @@ Volunteer updates his/her own existing expereience.
 ## Delete an experience
 
 ```http
-DELETE /users/me/experience/:experience_id HTTP/1.1
+DELETE /users/me/experience/:id HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -556,7 +558,7 @@ Volunteer deletes his/her own existing expereience.
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| :experience_id* | | The experience id which volunteer wants to delete |
+| :id* | | The experience id which volunteer wants to delete |
 
 <!-- Delete an experience END -->
 
@@ -581,7 +583,7 @@ Content-Type: application/json;charset=UTF-8
 {
     "education": [
         {
-            "education_id": "jimlin_1",
+            "id": 1,
             "school": "National Cheng Kung University",
             "degree": 5,
             "field_of_study": "Computer Science",
@@ -645,7 +647,9 @@ HTTP/1.1 201 Created
 Content-Type: application/json;charset=UTF-8
 
 {
-    "education_id": "jimlin_1"
+    "education": {
+        "id": 1
+    }
 }
 ```
 
@@ -697,7 +701,7 @@ X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 Authorization: Bearer d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 {
-    "education_id": "jimlin_1",
+    "id": "jimlin_1",
     "school": "National Cheng Kung University",
     "degree": 5,
     "field_of_study": "Computer Science",
@@ -769,7 +773,7 @@ Volunteer updates his/her own existing education record
 
 | Attribute | Default | Description |
 |-----------|---------|-------------|
-| education_id* | | The education ID |
+| id* | | The education ID |
 | school* | | School name |
 | degree* | | The education degree |
 | field_of_study | null | The major field of study  |
@@ -783,7 +787,7 @@ Volunteer updates his/her own existing education record
 ## Delete an education
 
 ```http
-DELETE /users/me/experience/:education_id HTTP/1.1
+DELETE /users/me/experience/:id HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -836,7 +840,7 @@ Volunteer deletes his/her own existing education.
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| :education_id* | | The education ID |
+| :id* | | The education ID |
 
 <!-- delete an education END -->
 
