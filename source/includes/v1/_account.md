@@ -271,10 +271,10 @@ Content-Type: application/json;charset=UTF-8
     "emergency_contact": "Jeremy Lin",
     "emergency_phone": "0919119119",
     "introduction": "I’m a genius. I Work on Data science/analytics and have excellent skills with Matlab and Ruby programming. My hobbies is sporting.",
-    "experience": {
+    "experiences": {
         "href": "https://vms.app/api/users/me/experiences" 
     },
-    "education": {
+    "educations": {
         "href": "https://vms.app/api/users/me/educations"
     },
     "skills": [
