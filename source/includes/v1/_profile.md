@@ -126,21 +126,66 @@ Update volunteer's own profile.
 <!-- update profile END -->
 
 
+## Upload an avatar image
+
+```http
+POST /avatar HTTP/1.1
+Content-Type: application/json
+Host: vms.app
+X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+```
+
+
+> Successful response:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+
+{
+    "avatar_url": "https://vms.app/upload/image/avatar/366b4c757bff8643b9f97441a974d94d42f5877b.jpeg"
+}
+```
+
+> Failure response:
+
+> If the image is uncorrect, it will return the following response: 
+
+```http
+HTTP/1.1 400 Bad Request
+Content-Type: application/json;charset=UTF-8
+
+{
+    "message": "Something wrong",
+    "errors": [
+        {
+            "code": "incorrect_type"
+        }
+    ]
+}
+```
+
+Upload an avatar image without JSON Web Token.
+
+The header attribute `Content-Type` value is `application/json`.
+
+### ATTRIBUTE
+
+| Attribute | Default | Description |
+|-----------|---------|-------------|
+| avatar* |  | base64 encoded string |
+
+<!-- upload an avatar image END -->
+
+
 ## Upload a new avatar image
 
 ```http
 POST /users/me/avatar HTTP/1.1
-Content-Type: multipart/form-data; boundary=Boundary_5_1873319439_1443827312034
+Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 Authorization: Bearer d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
-
---Boundary_5_1873319439_1443827312034
-Content-Type: image/jpeg
-Content-Disposition: form-data; filename="jimlin_avatar.jpg"; name="avatar"
-
-...(binary bytes of the image)...
---Boundary_5_1873319439_1443827312034--
 ```
 
 
@@ -221,7 +266,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
 
 {
-    "avatar_url": "https://vms.app/upload/image/avatar/jimlin_366b4c757bff8643b9f97441a974d94d42f5877b.jpeg"
+    "avatar_url": "https://vms.app/upload/image/avatar/366b4c757bff8643b9f97441a974d94d42f5877b.jpeg"
 }
 ```
 
@@ -253,7 +298,7 @@ Content-Type: application/json;charset=UTF-8
     "message": "Something wrong",
     "errors": [
         {
-            "code": "unable_to_upload_avatar"
+            "code": "incorrect_type"
         }
     ]
 }
@@ -261,15 +306,14 @@ Content-Type: application/json;charset=UTF-8
 
 Upload volunteer's own avatar image.
 
-The header attribute `Content-Type` value is `multipart/form-data`.
+The header attribute `Content-Type` value is `application/json`.
 
-In the future, the endpoint may support base64 encoded image data.
 
 ### ATTRIBUTE
 
 | Attribute | Default | Description |
 |-----------|---------|-------------|
-| avatar* |  | A binary raw data. It supports JPEG, JPG and PNG type. |
+| avatar* |  | Base 64 encoded string |
 | skip_profile | false | If the value is true, it will skip to return volunteer's profile object. |
 
 <!-- upload a new avatar image END -->
