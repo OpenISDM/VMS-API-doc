@@ -1118,19 +1118,70 @@
 
 <!-- update profile END -->
 
+<h2 id="upload-an-avatar-image">Upload an avatar image</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/avatar</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
+<span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
+</code></pre>
+
+<blockquote>
+<p>Successful response:</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/upload/image/avatar/366b4c757bff8643b9f97441a974d94d42f5877b.jpeg"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Failure response:</p>
+
+<p>If the image is uncorrect, it will return the following response: </p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Something wrong"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"incorrect_type"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Upload an avatar image without JSON Web Token.</p>
+
+<p>The header attribute <code class="prettyprint">Content-Type</code> value is <code class="prettyprint">application/json</code>.</p>
+
+<h3 id="attribute">ATTRIBUTE</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>avatar*</td>
+<td></td>
+<td>base64 encoded string</td>
+</tr>
+</tbody></table>
+
+<!-- upload an avatar image END -->
+
 <h2 id="upload-a-new-avatar-image">Upload a new avatar image</h2>
 <pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/users/me/avatar</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">multipart/form-data; boundary=Boundary_5_1873319439_1443827312034</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
 <span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
-
---Boundary_5_1873319439_1443827312034
-Content-Type: image/jpeg
-Content-Disposition: form-data; filename="jimlin_avatar.jpg"; name="avatar"
-
-...(binary bytes of the image)...
---Boundary_5_1873319439_1443827312034--
 </code></pre>
 
 <blockquote>
@@ -1210,7 +1261,7 @@ Content-Disposition: form-data; filename="jimlin_avatar.jpg"; name="avatar"
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/upload/image/avatar/jimlin_366b4c757bff8643b9f97441a974d94d42f5877b.jpeg"</span><span class="w">
+    </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vms.app/upload/image/avatar/366b4c757bff8643b9f97441a974d94d42f5877b.jpeg"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1242,7 +1293,7 @@ Content-Disposition: form-data; filename="jimlin_avatar.jpg"; name="avatar"
     </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Something wrong"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unable_to_upload_avatar"</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"incorrect_type"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1250,9 +1301,7 @@ Content-Disposition: form-data; filename="jimlin_avatar.jpg"; name="avatar"
 
 <p>Upload volunteer&rsquo;s own avatar image.</p>
 
-<p>The header attribute <code class="prettyprint">Content-Type</code> value is <code class="prettyprint">multipart/form-data</code>.</p>
-
-<p>In the future, the endpoint may support base64 encoded image data.</p>
+<p>The header attribute <code class="prettyprint">Content-Type</code> value is <code class="prettyprint">application/json</code>.</p>
 
 <h3 id="attribute">ATTRIBUTE</h3>
 
@@ -1266,7 +1315,7 @@ Content-Disposition: form-data; filename="jimlin_avatar.jpg"; name="avatar"
 <tr>
 <td>avatar*</td>
 <td></td>
-<td>A binary raw data. It supports JPEG, JPG and PNG type.</td>
+<td>Base 64 encoded string</td>
 </tr>
 <tr>
 <td>skip_profile</td>
