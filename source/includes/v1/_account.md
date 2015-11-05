@@ -24,7 +24,9 @@ X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
     "phone_number" : "0912345678",
     "email" : "jimlin@citi.sinica.edu.tw",
     "emergency_contact" : "Jeremy Lin",
-    "emergency_phone" : "0919119119"
+    "emergency_phone" : "0919119119",
+    "introduction": "I'm genius and work on Julia programming language.",
+    "avatar": "data:image/jpg;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/2wB...."
 }
 ```
 
@@ -112,6 +114,8 @@ Volunteer registers a new account. The system will send a verification email to 
 | email* |  |  |
 | emergency_contact* |  |  |
 | emergency_phone* |  |  |
+| introduction |  |  |
+| avatar |  | In base64 format |
 
 ### city ATTRIBUTE
 

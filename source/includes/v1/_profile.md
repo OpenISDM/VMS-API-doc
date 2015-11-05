@@ -112,14 +112,13 @@ Update volunteer's own profile.
 | last_name |  |  |
 | birth_year |   |  |
 | gender |  |  |
+| introducation |  |  |
 | city |  |  |
 | address |  |  |
-| introducation |  |  |
 | phone_number |  |  |
 | email |  |  |
 | emergency_contact |  |  |
 | emergency_phone |  |  |
-| avatar_url |  |  |
 
 *Note: If volunteer wants to change his/her password, please invoke /users/me/password API endpoint.*
 
@@ -133,6 +132,10 @@ POST /avatar HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+
+{
+    "avatar": "data:image/jpg;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/2wB...."
+}
 ```
 
 
@@ -186,6 +189,10 @@ Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 Authorization: Bearer d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+
+{
+    "avatar": "data:image/jpg;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/2wB...."
+}
 ```
 
 
