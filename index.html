@@ -174,7 +174,9 @@
     </span><span class="nt">"phone_number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0912345678"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"jimlin@citi.sinica.edu.tw"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"emergency_contact"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Jeremy Lin"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"emergency_phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0919119119"</span><span class="w">
+    </span><span class="nt">"emergency_phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0919119119"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"introduction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I'm genius and work on Julia programming language."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/jpg;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/2wB...."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -314,6 +316,16 @@
 <td>emergency_phone*</td>
 <td></td>
 <td></td>
+</tr>
+<tr>
+<td>introduction</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>avatar</td>
+<td></td>
+<td>In base64 format</td>
 </tr>
 </tbody></table>
 
@@ -1073,17 +1085,17 @@
 <td></td>
 </tr>
 <tr>
+<td>introducation</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>city</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>address</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>introducation</td>
 <td></td>
 <td></td>
 </tr>
@@ -1107,11 +1119,6 @@
 <td></td>
 <td></td>
 </tr>
-<tr>
-<td>avatar_url</td>
-<td></td>
-<td></td>
-</tr>
 </tbody></table>
 
 <p><em>Note: If volunteer wants to change his/her password, please invoke /users/me/password API endpoint.</em></p>
@@ -1123,7 +1130,11 @@
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
 <span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
-</code></pre>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/jpg;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/2wB...."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <blockquote>
 <p>Successful response:</p>
@@ -1182,7 +1193,11 @@
 <span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
 <span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
-</code></pre>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/jpg;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/2wB...."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <blockquote>
 <p>Successful response:</p>
