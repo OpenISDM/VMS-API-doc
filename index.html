@@ -478,7 +478,7 @@
 <!-- logout END -->
 
 <h2 id="authentication-amp-retrieve-volunteer-39-s-own-account">Authentication &amp; retrieve volunteer&rsquo;s own account</h2>
-<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/api/users/me</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/users/me</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
 <span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
@@ -711,7 +711,7 @@
 <!-- verify email address END -->
 
 <h2 id="request-for-a-password-reset">Request for a password reset</h2>
-<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/request_password_reset</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/users/password_reset</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
 <span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
@@ -784,7 +784,7 @@
 <!-- request for a password reset END -->
 
 <h2 id="reset-passowrd">Reset passowrd</h2>
-<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/reset_password/:email_address/:reset_password_token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http"><code><span class="nf">PUT</span> <span class="nn">/users/password_reset/:email_address/:reset_password_token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">vms.app</span>
 <span class="na">X-VMS-API-Key</span><span class="p">:</span> <span class="s">d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09</span>
