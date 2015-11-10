@@ -245,7 +245,7 @@ Volunteer logout the system. The `Authorization` will be deleted.
 ## Authentication & retrieve volunteer's own account
 
 ```http
-GET /api/users/me HTTP/1.1
+GET /users/me HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -465,7 +465,7 @@ Verify volunteer's email. The volunteer must be authenticated successfully.
 ## Request for a password reset
 
 ```http
-POST /api/request_password_reset HTTP/1.1
+POST /users/password_reset HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -531,7 +531,7 @@ Volunteer forgot his/her password. It sends a password reset email to the volunt
 ## Reset passowrd
 
 ```http
-POST /api/reset_password/:email_address/:reset_password_token HTTP/1.1
+PUT /users/password_reset/:email_address/:reset_password_token HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
