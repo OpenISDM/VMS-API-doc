@@ -625,7 +625,7 @@ X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 Authorization: Bearer d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 {
-   "existing_passowrd": "MYPASSW0RD",
+   "existing_password": "MYPASSW0RD",
    "new_password": "MY_NEW_PASSWoRD"
 }
 ```
