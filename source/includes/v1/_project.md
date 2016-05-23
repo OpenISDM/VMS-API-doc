@@ -19,10 +19,12 @@ Authorization: Bearer d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb
     "description": "The purpose of the project is for training volunteers.",
     "hyperlinks": [
         {
-            "id": 1
+          "name": "About us",
+          "url": "http://ies.siinca.edu.tw/about-us"
         },
         {
-            "id": 2
+          "name": "Training material",
+          "url": "http://ies.siinca.edu.tw/slides/"
         }
     ]
 }
@@ -52,12 +54,10 @@ Content-Type: application/json;charset=UTF-8
     "description": "The purpose of the project is for training volunteers.",
     "hyperlinks": [
       {
-        "id": 1,
         "name": "About us",
         "url": "http://ies.siinca.edu.tw/about-us"
       },
       {
-        "id": 2,
         "name": "Training material",
         "url": "http://ies.siinca.edu.tw/slides/"
       }
@@ -147,12 +147,10 @@ Content-Type: application/json;charset=UTF-8
       "description": "The purpose of the project is for training volunteers.",
       "hyperlinks": [
         {
-          "id": 1,
           "name": "About us",
           "url": "http://ies.siinca.edu.tw/about-us"
         },
         {
-          "id": 2,
           "name": "Training material",
           "url": "http://ies.siinca.edu.tw/slides/"
         }
@@ -226,12 +224,10 @@ Content-Type: application/json;charset=UTF-8
             "description": "The purpose of the project is for training volunteers.",
             "hyperlinks": [
               {
-                "id": 1,
                 "name": "About us",
                 "url": "http://ies.siinca.edu.tw/about-us"
               },
               {
-                "id": 2,
                 "name": "Training material",
                 "url": "http://ies.siinca.edu.tw/slides/"
               }
@@ -253,12 +249,10 @@ Content-Type: application/json;charset=UTF-8
             "description": "Crowdsourcing for survellience surrounding flood issue.",
             "hyperlinks": [
               {
-                "id": 4,
                 "name": "Affected area map",
                 "url": "http://water.tw/maps"
               },
               {
-                "id": 6,
                 "name": "Reporting platform",
                 "url": "http://water.tw/platform"
               }
@@ -301,12 +295,10 @@ Content-Type: application/json;charset=UTF-8
         "description": "The purpose of the project is for training volunteers.",
         "hyperlinks": [
           {
-            "id": 1,
             "name": "About us",
             "url": "http://ies.siinca.edu.tw/about-us"
           },
           {
-            "id": 2,
             "name": "Training material",
             "url": "http://ies.siinca.edu.tw/slides/"
           }
@@ -348,14 +340,12 @@ Content-Type: application/json;charset=UTF-8
           "url": "http://vms.app/api/v1/users/2"
         },
         "description": "Crowdsourcing for survellience surrounding flood issue.",
-        "links": [
+        "hyperlinks": [
           {
-            "id": 4,
             "name": "Affected area map",
             "url": "http://water.tw/maps"
           },
           {
-            "id": 6,
             "name": "Reporting platform",
             "url": "http://water.tw/platform"
           }
@@ -381,9 +371,15 @@ Authorization: Bearer d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb
     "permission": "public",
     "organization": "IES, Academia Sinica",
     "description": "The purpose of the project is for training volunteers.",
-    "links": [
-      1,
-      3
+    "hyperlinks": [
+      {
+        "name": "About us",
+        "url": "http://ies.siinca.edu.tw/about-us"
+      },
+      {
+        "name": "Instruction manual",
+        "url": "http://ies.siinca.edu.tw/instruction/"
+      }
     ]
 }
 ```
@@ -410,14 +406,12 @@ Content-Type: application/json;charset=UTF-8
         "url": "http://vms.app/api/v1/users/1"
       },
       "description": "The purpose of the project is for training volunteers.",
-      "links": [
+      "hyperlinks": [
         {
-          "id": 1,
           "name": "About us",
           "url": "http://ies.siinca.edu.tw/about-us"
         },
         {
-          "id": 3,
           "name": "Instruction manual",
           "url": "http://ies.siinca.edu.tw/instruction/"
         }
