@@ -276,7 +276,7 @@ Content-Type: application/json;charset=UTF-8
     "emergency_phone": "0919119119",
     "introduction": "I’m a genius. I Work on Data science/analytics and have excellent skills with Matlab and Ruby programming. My hobbies is sporting.",
     "experiences": {
-        "href": "https://vms.app/api/users/me/experiences" 
+        "href": "https://vms.app/api/users/me/experiences"
     },
     "educations": {
         "href": "https://vms.app/api/users/me/educations"
@@ -483,7 +483,7 @@ HTTP/1.1 204 No Content
 
 > Failure response:
 
-> If the field is misssing, it will return the following response: 
+> If the field is misssing, it will return the following response:
 
 ```http
 HTTP/1.1 422 Unprocessable Entity
@@ -500,10 +500,10 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-> If the email is unvalidated, it will return the following response: 
+> If the email is unvalidated, it will return the following response:
 
 ```http
-HTTP/1.1 400 Bad Request
+HTTP/1.1 422 Unprocessable Entity
 Content-Type: application/json;charset=UTF-8
 
 {
@@ -549,7 +549,7 @@ HTTP/1.1 204 No Content
 
 > Failure response:
 
-> If the field is misssing, it will return the following response: 
+> If the field is misssing, it will return the following response:
 
 ```http
 HTTP/1.1 422 Unprocessable Entity
@@ -566,10 +566,10 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-> If the volunteer's password is unsecure, it will return the following response: 
+> If the volunteer's password is unsecure, it will return the following response:
 
 ```http
-HTTP/1.1 400 Bad Request
+HTTP/1.1 422 Unprocessable Entity
 Content-Type: application/json;charset=UTF-8
 
 {

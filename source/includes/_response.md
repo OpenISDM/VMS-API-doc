@@ -21,5 +21,6 @@ Error Code | Meaning
 401 | Unauthorized -- Your `X-VMS-API-Key` or `X-VMS-Auth-Token` is wrong.
 403 | Forbidden -- The requeste is not able to execute.
 404 | Not Found -- The specified VMS could not be found.
+409 | Conflict -- There is duplicated resource.
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.

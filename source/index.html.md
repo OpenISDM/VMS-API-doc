@@ -13,6 +13,10 @@ includes:
   - response
   - v1/account
   - v1/profile
+  - v1/project
+  - v1/project_member
+  - v1/project_custom_field
+  - v1/project_custom_field_data
 
 search: true
 ---

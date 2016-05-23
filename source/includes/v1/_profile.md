@@ -40,7 +40,7 @@ Content-Type: application/json;charset=UTF-8
     "emergency_phone": "0978123456",
     "introduction": "I’m a genius. I Work on Data science/analytics and have excellent skills with Matlab and Ruby programming. My hobbies is sporting.",
     "experiences": {
-        "href": "https://vms.app/api/users/me/exeperiences" 
+        "href": "https://vms.app/api/users/me/exeperiences"
     },
     "educations": {
         "href": "https://vms.app/api/users/me/educations"
@@ -112,7 +112,7 @@ Update volunteer's own profile.
 | last_name |  |  |
 | birth_year |   |  |
 | gender |  |  |
-| introducation |  |  |
+| introduction |  |  |
 | city |  |  |
 | address |  |  |
 | phone_number |  |  |
@@ -152,7 +152,7 @@ Content-Type: application/json;charset=UTF-8
 
 > Failure response:
 
-> If the image is uncorrect, it will return the following response: 
+> If the image is uncorrect, it will return the following response:
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -222,7 +222,7 @@ Content-Type: application/json;charset=UTF-8
     "emergency_phone": "0978123456",
     "introduction": "I’m a genius. I Work on Data science/analytics and have excellent skills with Matlab and Ruby programming. My hobbies is sporting.",
     "experiences": {
-        "href": "https://vms.app/api/users/me/exeperiences" 
+        "href": "https://vms.app/api/users/me/exeperiences"
     },
     "educations": {
         "href": "https://vms.app/api/users/me/educations"
@@ -295,7 +295,7 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-> If the image is uncorrect, it will return the following response: 
+> If the image is uncorrect, it will return the following response:
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -1112,7 +1112,7 @@ Content-Type: application/json;charset=UTF-8
         {
             "id": 8,
             "name": "新竹縣"
-        }, 
+        },
         {
             "id": 9,
             "name": "苗栗縣"
@@ -1191,7 +1191,7 @@ Content-Type: application/json;charset=UTF-8
 |-----------|---------|-------------|
 | locale    |  en-US  | The language and country codes |
 
-The language codes are two-letter lowercase ISO language codes (such as "zh") as defined by [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1). 
+The language codes are two-letter lowercase ISO language codes (such as "zh") as defined by [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1).
 The country codes are two-letter uppercase ISO country codes (such as "TW") as defined by [ISO 3166-1](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3)
 
 <!-- get country cities END -->
@@ -1306,4 +1306,3 @@ The API endpoint can search the skill keyword.
 | :keyword* |   | The searched keyword |
 
 <!-- Get equipment keyword -->
-
