@@ -67,7 +67,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json;charset=UTF-8
 
 {
-    "message": "The custom field was created successfully."
+    "message": "The custom field was created successfully.",
     "data": {
         "id": 1,
         "name": "Which school?",

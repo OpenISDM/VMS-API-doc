@@ -19,10 +19,10 @@ Authorization: Bearer d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb
     "description": "The purpose of the project is for training volunteers.",
     "hyperlinks": [
         {
-            id: 1
+            "id": 1
         },
         {
-            id: 2
+            "id": 2
         }
     ]
 }
