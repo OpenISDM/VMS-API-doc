@@ -3,7 +3,7 @@
 ## Register
 
 ```http
-POST /api/register HTTP/1.1
+POST /register HTTP/1.1
 Host: vms.app
 Content-Type: application/json
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
@@ -270,7 +270,7 @@ The response will contains token in `Authorization` header.
 
 
 ```http
-DELETE /api/auth HTTP/1.1
+DELETE /auth HTTP/1.1
 Content-Type: application/json
 Host: vms.app
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
