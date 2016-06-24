@@ -52,13 +52,12 @@ HTTP/1.1 422 Unprocessable Entity
 Content-Type: application/json;charset=UTF-8
 
 {
-    "message": "Validation failed",
-    "errors": [
-        {
-            "field": ["username", "password"],
-            "code": "missing_field"
-        }
-    ]
+    "message": "422 Unprocessable Entity",
+    "errors": {
+        "username": ["missing_field"],
+        "password": ["missing_field"]
+    },
+    "status_code":422
 }
 ```
 
@@ -69,13 +68,12 @@ HTTP/1.1 422 Unprocessable Entity
 Content-Type: application/json;charset=UTF-8
 
 {
-    "message": "Validation failed",
-    "errors": [
-        {
-            "field": ["passsword"],
-            "code": "not_enough_password_strength"
-        }
-    ]
+    "message": "422 Unprocessable Entity",
+    "errors": {
+        "username": ["missing_field"],
+        "password": ["not_enough_password_strength"]
+    },
+    "status_code":422
 }
 ```
 
@@ -86,13 +84,12 @@ HTTP/1.1 422 Unprocessable Entity
 Content-Type: application/json;charset=UTF-8
 
 {
-    "message": "Validation failed",
-    "errors": [
-        {
-            "field": ["username", "password"],
-            "code": "used_field"
-        }
-    ]
+    "message": "422 Unprocessable Entity",
+    "errors": {
+        "username": ["used_field"],
+        "email": ["used_field"]
+    },
+    "status_code":422
 }
 ```
 
@@ -138,7 +135,7 @@ Content-Type: application/json
 X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 
 {
-    "username": "jimlin",
+    "username": "ymhuang",
     "password": "MYPASSW0RD"
 }
 ```
@@ -148,10 +145,77 @@ X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vdm1zLmFwcC9hcGkvYXV0aCIsImlhdCI6MTQ2NjczODYzNiwiZXhwIjoxNDY2NzQ5NDM2LCJuYmYiOjE0NjY3Mzg2MzYsImp0aSI6IjA5Zjc4YzU3ZTlhZTA3ZmIxODM5MjYyMTk1MzJmM2NhIiwic3ViIjoxfQ.g88pt_VjY5BFYSuL7Km__0B8a-Pc-XeyAl2GUbgyreU
+
 
 {
-    "href": "https://vms.app/api/users/me",
-    "auth_access_token": "56f4da226eb22caa0633023bfdd402658e5c6501c972e83bfb2866f2112b103f"
+  "data": {
+    "username": "ymhuang",
+    "first_name": "Huang",
+    "last_name": "AMing",
+    "birth_year": 1991,
+    "gender": "male",
+    "city": {
+      "id": 2,
+      "name_en": "New Taipei City"
+    },
+    "location": "Nangan",
+    "phone_number": "0912345678",
+    "email": "ymhuang@cc.com",
+    "emergency_contact": "HuangPaPa",
+    "emergency_phone": "0910234567",
+    "introduction": "Wahahaaaqqqqaaabbb",
+    "experiences": {
+      "href": "http://vms.app/api/users/me/experiences"
+    },
+    "educations": {
+      "href": "http://vms.app/api/users/me/educations"
+    },
+    "skills": [
+      {
+        "id": 1,
+        "name": "programming"
+      },
+      {
+        "id": 2,
+        "name": "java"
+      },
+      {
+        "id": 3,
+        "name": "PHP"
+      }
+    ],
+    "equipment": [
+      {
+        "id": 1,
+        "name": "car"
+      },
+      {
+        "id": 2,
+        "name": "computer"
+      }
+    ],
+    "projects": {
+      "href": "http://vms.app/api/users/me/projects"
+    },
+    "processes": {
+      "participating_number": 0,
+      "participated_number": 0,
+      "href": "http://vms.app/api/users/me/processes"
+    },
+    "avatar_url": "http://vms-openisdm.s3-website-ap-northeast-1.amazonaws.com/upload/avatars/bc26c925ee763bc0618b.png",
+    "is_actived": true,
+    "updated_at": {
+      "date": "2016-06-24 02:09:20.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    },
+    "created_at": {
+      "date": "2016-04-11 05:57:47.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    }
+  }
 }
 ```
 
@@ -164,11 +228,9 @@ HTTP/1.1 401 Unauthorized
 Content-Type: application/json;charset=UTF-8
 
 {
-    "message": "Authentication failed",
+    "message": "Unauthorized",
     "errors": [
-        {
-            "code": "incorrect_login_credentials"
-        }
+        "unauthorized"
     ]
 }
 ```
@@ -180,24 +242,26 @@ HTTP/1.1 422 Unprocessable Entity
 Content-Type: application/json;charset=UTF-8
 
 {
-    "message": "Validation failed",
-    "errors": [
-        {
-            "field": ["username", "password"],
-            "code": "missing_field"
-        }
-    ]
+    "message": "422 Unprocessable Entity",
+    "errors": {
+        "username": ["missing_field"],
+        "password": ["missing_field"]
+    },
+    "status_code":422
 }
 ```
 
 Volunteer logs into the system with credentials.
 
-### ATTRIBUTE
+### Request attributes
 
 | Attribute | Default | Description |
 |-----------|---------|-------------|
 | username* |  | volunteer's username |
 | password* |  | volunteer's password |
+
+
+The response will contains token in `Authorization` header.
 
 <!-- login END -->
 
@@ -221,19 +285,15 @@ HTTP/1.1 204 No Content
 
 > Failure response:
 
-> If the volunteer's `auth_access_token` doesn't exist, it will return the following response:
+> If the volunteer's JWT is not validated, it will return the following response:
 
 ```http
-HTTP/1.1 404 Not Found
+HTTP/1.1 401 Not Found
 Content-Type: application/json;charset=UTF-8
 
 {
-    "message": "Failed to logout",
-    "errors": [
-        {
-            "code": "no_existing_auth_access_token"
-        }
-    ]
+    "message": "Token Signature could not be verified.",
+    "status_code": 401
 }
 ```
 
@@ -319,24 +379,6 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-> Failure response:
-
-> If the volunteer doesn't have right to access, it will return the following response:
-
-```http
-HTTP/1.1 403 Forbidden
-Content-Type: application/json;charset=UTF-8
-
-{
-    "message": "Forbidden to access",
-    "errors": [
-        {
-            "code": "cannot_access"
-        }
-    ]
-}
-```
-
 If the `Authorization` is validated, it will return the volunteer's profile object.
 
 <!-- authentication END -->
@@ -363,24 +405,6 @@ Content-Type: application/json;charset=UTF-8
 
 {
     "message": "Resend verification email successfully"
-}
-```
-
-> Failure response:
-
-> If the volunteer doesn't have right to access, it will return the following response:
-
-```http
-HTTP/1.1 403 Forbidden
-Content-Type: application/json;charset=UTF-8
-
-{
-    "message": "Forbidden to access",
-    "errors": [
-        {
-            "code": "cannot_access"
-        }
-    ]
 }
 ```
 
@@ -416,24 +440,6 @@ HTTP/1.1 200 Ok
 }
 ```
 
-> Failure response:
-
-> If the volunteer doesn't have right to access, it will return the following response:
-
-```http
-HTTP/1.1 403 Forbidden
-Content-Type: application/json;charset=UTF-8
-
-{
-    "message": "Forbidden to access",
-    "errors": [
-        {
-            "code": "cannot_access"
-        }
-    ]
-}
-```
-
 > If the verification token is unvalidated or expired, it will return the following response:
 
 ```http
@@ -443,9 +449,7 @@ Content-Type: application/json;charset=UTF-8
 {
     "message": "Unvalidated or expired verification token",
     "errors": [
-        {
-           "code": "unvalidated_expired_verification_token"
-        }
+        "unvalidated_expired_verification_token"
     ]
 }
 ```
@@ -481,41 +485,6 @@ X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
 HTTP/1.1 204 No Content
 ```
 
-> Failure response:
-
-> If the field is misssing, it will return the following response:
-
-```http
-HTTP/1.1 422 Unprocessable Entity
-Content-Type: application/json;charset=UTF-8
-
-{
-    "message": "Validation failed",
-    "errors": [
-        {
-            "field": ["username"],
-            "code": "missing_field"
-        }
-    ]
-}
-```
-
-> If the email is unvalidated, it will return the following response:
-
-```http
-HTTP/1.1 422 Unprocessable Entity
-Content-Type: application/json;charset=UTF-8
-
-{
-    "message": "Validation failed",
-    "errors": [
-        {
-            "field": ["username"],
-            "code": "unvalidated_username"
-        }
-    ]
-}
-```
 
 Volunteer forgot his/her password. It sends a password reset email to the volunteer.
 

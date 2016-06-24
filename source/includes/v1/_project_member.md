@@ -130,6 +130,11 @@ Content-Type: application/json;charset=UTF-8
 
 A volunteer attends a project.
 
+## Show members in a project
+/**
+ * @TODO
+ */
+
 ## Dettach a project from a project
 
 ```http
