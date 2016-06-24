@@ -1,5 +1,91 @@
 # Profile
 
+## Get profile
+```http
+GET /users/me HTTP/1.1
+Content-Type: application/json
+Host: vms.app
+X-VMS-API-Key: d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+Authorization: Bearer d6527aa8bcf55187490154283e4d2a1a268a94ead2322f883276a7c3cb52cd09
+```
+
+> Successful response:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+
+{
+  "data": {
+    "username": "ymhuang",
+    "first_name": "Huang",
+    "last_name": "AMing",
+    "birth_year": 1991,
+    "gender": "male",
+    "city": {
+      "id": 2,
+      "name_en": "New Taipei City"
+    },
+    "location": "Nangan",
+    "phone_number": "0912345678",
+    "email": "ymhuang@cc.com",
+    "emergency_contact": "HuangPaPa",
+    "emergency_phone": "0910234567",
+    "introduction": "Wahahaaaqqqqaaabbb",
+    "experiences": {
+      "href": "http://vms.app/api/users/me/experiences"
+    },
+    "educations": {
+      "href": "http://vms.app/api/users/me/educations"
+    },
+    "skills": [
+      {
+        "id": 1,
+        "name": "programming"
+      },
+      {
+        "id": 2,
+        "name": "java"
+      },
+      {
+        "id": 3,
+        "name": "PHP"
+      }
+    ],
+    "equipment": [
+      {
+        "id": 1,
+        "name": "car"
+      },
+      {
+        "id": 2,
+        "name": "computer"
+      }
+    ],
+    "projects": {
+      "href": "http://vms.app/api/users/me/projects"
+    },
+    "processes": {
+      "participating_number": 0,
+      "participated_number": 0,
+      "href": "http://vms.app/api/users/me/processes"
+    },
+    "avatar_url": "http://vms-openisdm.s3-website-ap-northeast-1.amazonaws.com/upload/avatars/bc26c925ee763bc0618b.png",
+    "is_actived": true,
+    "updated_at": {
+      "date": "2016-06-24 02:09:20.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    },
+    "created_at": {
+      "date": "2016-04-11 05:57:47.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    }
+  }
+}
+```
+
 ## Update profile
 
 ```http
